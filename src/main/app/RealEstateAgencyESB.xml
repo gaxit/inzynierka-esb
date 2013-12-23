@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" 
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.1" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd 
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+		
+	<flow name="dictionariesFlow" doc:name="dictionariesFlow">
+        <inbound-endpoint mimeType="text/xml" exchange-pattern="request-response" 
+			address="http://localhost:6666/dictionaries" doc:name="HTTP" />
+        <cxf:proxy-service namespace="dictionaries" service="dicsService" 
+			wsdlLocation="http://localhost:8080/RealEstateAgency/dicsService/DicsService?wsdl"/>
+        <cxf:proxy-client payload="body" doc:name="Proxy client"/>
+        <outbound-endpoint  exchange-pattern="request-response" 
+			address="http://localhost:8080/RealEstateAgency/dicsService/DicsService" doc:name="Invoke Web Service" />
+    </flow>
+    
+    <flow name="usersFlow" doc:name="usersFlow">
+        <inbound-endpoint mimeType="text/xml" exchange-pattern="request-response" 
+			address="http://localhost:6666/users" doc:name="HTTP" />
+        <cxf:proxy-service namespace="users" service="userService" 
+			wsdlLocation="http://localhost:8080/RealEstateAgency/userService/UserService?wsdl"/>
+        <cxf:proxy-client payload="body" doc:name="Proxy client"/>
+        <outbound-endpoint  exchange-pattern="request-response" 
+			address="http://localhost:8080/RealEstateAgency/userService/UserService" doc:name="Invoke Web Service" />
+    </flow>
+    
+    <flow name="offersFlow" doc:name="offersFlow">
+        <inbound-endpoint mimeType="text/xml" exchange-pattern="request-response" 
+			address="http://localhost:6666/offers" doc:name="HTTP" />
+        <cxf:proxy-service namespace="offers" service="offerService" 
+			wsdlLocation="http://localhost:8080/RealEstateAgency/offerService/OfferService?wsdl"/>
+        <cxf:proxy-client payload="body" doc:name="Proxy client"/>
+        <outbound-endpoint  exchange-pattern="request-response" 
+			address="http://localhost:8080/RealEstateAgency/offerService/OfferService" doc:name="Invoke Web Service" />
+    </flow>
+
+</mule>
