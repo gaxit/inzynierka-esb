@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="RealEstateAgencyESB">
-    <flow SubFlow="false" name="usersFlow" entity-id="ade89877-d1d9-4e6a-992e-1ebf0a0b95e3">
+    <flow SubFlow="false" name="usersFlow" entity-id="47716d4e-5ca9-4216-ad23-0751a4da2365">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -85,7 +85,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="offersFlow" entity-id="78917aa6-c957-4635-af02-ae2da50f2a01">
+    <flow SubFlow="false" name="offersFlow" entity-id="9c06b2ce-9550-4b22-ac93-74d7ee20b394">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
