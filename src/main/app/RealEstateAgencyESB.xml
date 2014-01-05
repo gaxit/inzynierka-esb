@@ -7,16 +7,6 @@
 	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd 
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
-		
-	<flow name="dictionariesFlow" doc:name="dictionariesFlow">
-        <inbound-endpoint mimeType="text/xml" exchange-pattern="request-response" 
-			address="http://localhost:6666/dictionaries" doc:name="HTTP" />
-        <cxf:proxy-service namespace="dictionaries" service="dicsService" 
-			wsdlLocation="http://localhost:8080/RealEstateAgency/dicsService/DicsService?wsdl"/>
-        <cxf:proxy-client payload="body" doc:name="Proxy client"/>
-        <outbound-endpoint  exchange-pattern="request-response" 
-			address="http://localhost:8080/RealEstateAgency/dicsService/DicsService" doc:name="Invoke Web Service" />
-    </flow>
     
     <flow name="usersFlow" doc:name="usersFlow">
         <inbound-endpoint mimeType="text/xml" exchange-pattern="request-response" 
